@@ -8,12 +8,15 @@ action_map = (
     ('PATCH', 'partial update'),
     ('DELETE', 'destroy'),
 )
+
+action_map_dictionary = dict(action_map)
 class Permission(models.Model):
     view = models.CharField(max_length=128)
     action = models.CharField(max_length=16,choices=action_map)
 
     def __str__(self):
-        return self.view+' '+self.action
+        return self.view+' '+action_map_dictionary[self.action]
+
 
 class Group(models.Model):
     name = models.CharField(max_length=64, default="NO_NAME")
