@@ -1,5 +1,5 @@
 from django.contrib import admin
 from .models import *
 
-admin.register(Permission)
-admin.register(Group)
+admin.site.register(Permission)
+admin.site.register(Group)
