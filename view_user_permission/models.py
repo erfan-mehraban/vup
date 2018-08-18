@@ -12,7 +12,7 @@ class Permission(models.Model):
     action = models.CharField(max_length=16,choices=action_map)
 
     def save(self, *args, **kwargs):
-        self.name = get_name(self.view, self.action)
+        self.name = self.get_name(self.view, self.action)
         super().save(*args, **kwargs)
     
     @staticmethod
