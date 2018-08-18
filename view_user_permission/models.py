@@ -20,8 +20,8 @@ class Permission(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=64, default="NO_NAME")
-    permissions = models.ManyToManyField(Permission, related_name="permissions")
-    user = models.ManyToManyField(User, related_name="consist")
+    permissions = models.ManyToManyField(Permission, related_name="groups")
+    user = models.ManyToManyField(User, related_name="roles")
 
     def __str__(self):
         return self.name
