@@ -1,13 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-action_map = (
-    ('GET', 'retrieve'),
-    ('POST', 'create'),
-    ('PUT', 'update'),
-    ('PATCH', 'partial update'),
-    ('DELETE', 'destroy'),
-)
+action_map_list = ['retrieve', 'list', 'create', 'update', 'partial_update', 'destroy']
+action_map = tuple([(x,x) for x in action_map_list])
 
 action_map_dictionary = dict(action_map)
 class Permission(models.Model):
