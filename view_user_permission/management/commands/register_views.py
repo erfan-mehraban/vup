@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
-
+from view_user_permission.models import Permission, action_map
+from view_user_permission.register import registered_views
 class Command(BaseCommand):
     help = "register views with @register_view in permission model"
     # force django to check all system so view registeration in
@@ -7,4 +8,8 @@ class Command(BaseCommand):
     requires_system_checks = True
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS('every thing seems good'))
+        for view_name in registered_views:
+            self.stdout.write(view_name+" registered")
+            for action in action_map:
+                Permission.objects.get_or_create(view=view_name, action=action[0])
+        self.stdout.write(self.style.SUCCESS('done'))
