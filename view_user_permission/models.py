@@ -1,14 +1,19 @@
 from django.db import models
 from cityhash import CityHash32
 from django.conf import settings
-action_map_list = ['retrieve', 'list', 'create', 'update', 'partial_update', 'destroy']
-action_map = tuple([(x,x) for x in action_map_list])
 
-action_map_dictionary = dict(action_map)
 class Permission(models.Model):
+    action_map = (
+        (0,'retrieve'),
+        (1,'list'),
+        (2,'create'),
+        (3,'update'),
+        (4,'partial_update'),
+        (5,'destroy'),
+    )
     name = models.IntegerField(primary_key=True, default=0)
     view = models.CharField(max_length=128)
-    action = models.CharField(max_length=16,choices=action_map)
+    action = models.PositiveSmallIntegerField(choices=action_map)
 
     def save(self, *args, **kwargs):
         self.name = self.get_name(self.view, self.action)
@@ -21,7 +26,7 @@ class Permission(models.Model):
         return CityHash32(view+action)
 
     def __str__(self):
-        return self.view+' '+action_map_dictionary[self.action]
+        return self.view+' '+self.get_action_display()
 
 
 class Group(models.Model):
