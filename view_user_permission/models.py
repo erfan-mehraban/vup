@@ -10,7 +10,7 @@ action_map = (
 )
 class Permission(models.Model):
     view = models.CharField(max_length=128)
-    action = models.SmallIntegerField(choices=action_map)
+    action = models.CharField(max_length=16,choices=action_map)
 
 class Group(models.Model):
     permissions = models.ManyToManyField(Permission, related_name="permissions")
