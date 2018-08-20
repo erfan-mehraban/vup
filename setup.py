@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='view_user_permission',
-    version='0.1',
+    version='0.2',
     description='checking view action permissions by user credinals',
     author='Erfan Mehraban',
     author_email='erfan.mehraban@gmail.com',
