@@ -11,5 +11,5 @@ class Command(BaseCommand):
         for view_name in registered_views:
             self.stdout.write(view_name+" registered")
             for action in Permission.action_map:
-                Permission.objects.get_or_create(view=view_name, action=str(action[0]))
+                Permission.objects.get_or_create(view=view_name, action=action[0])
         self.stdout.write(self.style.SUCCESS('done'))

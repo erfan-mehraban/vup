@@ -4,12 +4,12 @@ from django.conf import settings
 
 class Permission(models.Model):
     action_map = (
-        (0,'retrieve'),
-        (1,'list'),
-        (2,'create'),
-        (3,'update'),
-        (4,'partial_update'),
-        (5,'destroy'),
+        (0, 'retrieve'),
+        (1, 'list'),
+        (2, 'create'),
+        (3, 'update'),
+        (4, 'partial_update'),
+        (5, 'destroy'),
     )
     name = models.IntegerField(primary_key=True, default=0)
     view = models.CharField(max_length=128)
@@ -21,8 +21,19 @@ class Permission(models.Model):
     
     @staticmethod
     def get_name(view, action):
+        """ return name of permission acording to view and action
+
+        :param view: view as 'module_path.view_name'
+        :param action: action code or action method name
+        """
         if action is None:
             action = ""
+        elif isinstance(action, int):
+            action = str(action)
+        elif isinstance(action, str):
+            action_map_dict = dict((x,y) for y,x in Permission.action_map)
+            print(action_map_dict)
+            action = str(action_map_dict[action])
         return CityHash32(view+action)
 
     def __str__(self):
