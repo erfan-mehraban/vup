@@ -1,6 +1,5 @@
 from django.db import models
 from cityhash import CityHash32
-from django.conf import settings
 
 class Permission(models.Model):
     action_map = (
@@ -18,7 +17,7 @@ class Permission(models.Model):
     def save(self, *args, **kwargs):
         self.name = self.get_name(self.view, self.action)
         super().save(*args, **kwargs)
-    
+
     @staticmethod
     def get_name(view, action):
         """ return name of permission acording to view and action
@@ -43,7 +42,7 @@ class Permission(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=64, default="NO_NAME")
     permissions = models.ManyToManyField(Permission, related_name="groups")
-    user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="roles")
+    # user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="roles")
 
     def __str__(self):
         return self.name
