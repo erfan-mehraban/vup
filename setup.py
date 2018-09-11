@@ -9,7 +9,7 @@ setup(name='view_user_permission',
     packages=['view_user_permission', 'view_user_permission.migrations'],
     install_requires=[
         'cityhash==0.2.3.post9',
-        'Django==2.1',
+        'Django>=2.0.4',
         'djangorestframework==3.8.2',
     ],
     include_package_data=True,
