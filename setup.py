@@ -6,7 +6,7 @@ setup(name='view_user_permission',
     author='Erfan Mehraban',
     author_email='erfan.mehraban@gmail.com',
     license='MIT',
-    packages=['view_user_permission', 'view_user_permission.migrations'],
+    packages=['view_user_permission', 'view_user_permission.migrations', 'view_user_permission.management'],
     install_requires=[
         'cityhash==0.2.3.post9',
         'Django>=2.0.4',
