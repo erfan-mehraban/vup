@@ -123,3 +123,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'test_vup.User'
+
+# rest settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'view_user_permission.permissions.UserPermission',
+    )
+}

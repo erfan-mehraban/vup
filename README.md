@@ -53,8 +53,16 @@ $ python3 manage.py register_views
 ```
 ### Applying for all views
 
-You can write a base class which register (append) itself to ```view_user_permission.register.registered_views``` and inherit all of your views from it.
+change the ```settings.py``` and modify ```DEFAULT_PERMISSION_CLASSES```:
 
+```
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'view_user_permission.permissions.UserPermission',
+        ...
+    )
+}
+```
 
 ## Grouping and permission accessing
 
@@ -100,4 +108,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## TODO
 
 * bring roles relation in group admin page
-* implement better idea for registering all views ??
