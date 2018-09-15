@@ -1,7 +1,7 @@
 from rest_framework import permissions
 from rest_framework.permissions import *
 from .models import Permission
-from . import register
+from .helper import get_view_name
 from django.contrib.auth.models import AnonymousUser
 
 class UserPermission(permissions.IsAuthenticated):
@@ -13,5 +13,5 @@ class UserPermission(permissions.IsAuthenticated):
         if not hasattr(view, 'action'):
             return False
         return request.user.roles.filter(
-            permissions__name=Permission.get_name(register.get_view_name(view.__class__), view.action)
+            permissions__name=Permission.get_name(get_view_name(view.__class__), view.action)
             ).exists()

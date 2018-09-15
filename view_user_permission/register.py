@@ -1,4 +1,5 @@
 from .permissions import UserPermission
+from .helper import get_view_name
 registered_views = []
 
 def register_view(view_class):
@@ -10,7 +11,3 @@ def register_view(view_class):
     view_class.permission_classes.append(UserPermission)
     registered_views.append(get_view_name(view_class))
     return view_class
-
-def get_view_name(view_class):
-    """ combine app name and view name """
-    return view_class.__module__+"."+view_class.__name__
