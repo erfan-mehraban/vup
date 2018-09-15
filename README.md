@@ -90,7 +90,7 @@ This test app only save a number and you can l/r/c/u/up it.
 
 ```@register_view``` append view in ```view_user_permission.register.registered_views```. Then ```register_views``` command make a permission instance for every view and actions.
 
-Also ```@register_view``` append vup permssion to permission list of view. When user want to access view ```UserPermission.has_permission``` will be called and this function check user permission exsits according to loged in user, view and action requested.
+Also ```@register_view``` append vup permssion to permission list of view. When user want to access view ```UserPermission.has_permission``` will be called and this function check user permission exists according to loged in user, view and action requested.
 
 # Other notes
 
