@@ -10,7 +10,7 @@ class Permission(models.Model):
         (4, 'partial_update'),
         (5, 'destroy'),
     )
-    name = models.IntegerField(primary_key=True, default=0)
+    name = models.BigIntegerField(primary_key=True, default=0)
     view = models.CharField(max_length=128)
     action = models.PositiveSmallIntegerField(choices=action_map)
 
