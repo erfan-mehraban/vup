@@ -53,7 +53,7 @@ $ python3 manage.py register_views
 ```
 ### Applying for all views
 
-change the ```settings.py``` and modify ```DEFAULT_PERMISSION_CLASSES```:
+change the ```settings.py``` and modify ```DEFAULT_PERMISSION_CLASSES``` (but remember to add permission if you define it expeliciltly ):
 
 ```
 REST_FRAMEWORK = {

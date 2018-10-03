@@ -9,7 +9,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for view_name in registered_views:
-            self.stdout.write(view_name+" registered")
+            self.stdout.write(view_name)
             for action in Permission.action_map:
                 Permission.objects.get_or_create(view=view_name, action=action[0])
+                self.stdout.write("\t"+str(action[1])+" registered")
         self.stdout.write(self.style.SUCCESS('done'))
