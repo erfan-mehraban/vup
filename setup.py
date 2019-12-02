@@ -10,7 +10,7 @@ setup(name='view_user_permission',
     install_requires=[
         'cityhash==0.2.3.post9',
         'Django>=2.0.4',
-        'djangorestframework==3.8.2',
+        'djangorestframework==3.9.1',
     ],
     include_package_data=True,
     zip_safe=False)
